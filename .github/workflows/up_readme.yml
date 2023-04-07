@@ -1,0 +1,21 @@
+name: Update README.md
+
+on:
+  schedule:
+    - cron: "4 4 4 * 4"
+  workflow_dispatch:
+
+jobs:
+  def:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Download README.md
+        run: wget https://raw.githubusercontent.com/wdssmq/wdssmq/main/README.md
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: README.md
+          message: Update README.md
+          default_author: github_actions
